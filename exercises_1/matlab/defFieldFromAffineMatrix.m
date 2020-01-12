@@ -18,8 +18,10 @@ function def_field = defFieldFromAffineMatrix(aff_mat, num_pix_x, num_pix_y)
 %form 2D matrices containing all the pixel coordinates
 [X, Y] = ndgrid(0:num_pix_x - 1, 0:num_pix_y - 1);
 
-%reshape and combine coordinate matrices into a 2 x N matrix, where N is
-%the total number of pixels (num_pix_x x num_pix_y)
+%reshape and combine coordinate matrices into a 3 x N matrix, where N is
+%the total number of pixels (num_pix_x x num_pix_y). The first row contains
+%the x coordinates, the second row the y coordinates, and the third row is
+%all set to 1 (i.e. using homogeneous coordinates)
 total_pix = num_pix_x * num_pix_y;
 pix_coords = [reshape(X, 1, total_pix) ; reshape(Y, 1, total_pix); ones(1, total_pix)];
 
