@@ -61,8 +61,10 @@ def defFieldFromAffineMatrix(aff_mat,num_pix_x, num_pix_y):
   # note the rows/columns are switched for this meshgrid
   # function
   [Y,X] = np.meshgrid(range(num_pix_x), range(num_pix_y))
-  # reshape and combine coordinate matrices into a 2 x N matrix, where N is
+  # reshape and combine coordinate matrices into a 3 x N matrix, where N is
   # the total number of pixels (num_pix_x x num_pix_y)
+  # the 1st row contains the x coordinates, the 2nd the y coordinates, and the
+  # 3rd row is all set to 1 (i.e. using homogenous coordinates)
   total_pix = num_pix_x * num_pix_y
   pix_coords = np.array([np.reshape(X,-1),np.reshape(Y,-1),np.ones(total_pix)])
   # apply transformation to pixel coordinates
