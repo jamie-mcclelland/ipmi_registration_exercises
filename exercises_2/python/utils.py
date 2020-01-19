@@ -254,18 +254,19 @@ def dispDefField(def_field, ax = None, spacing = 5, disptype = 'grid'):
     for j in np.arange(0,def_field.shape[1],spacing):
       ax.plot(def_field[:,j,0],def_field[:,j,1], c='red')
 
-  if disptype == 'arrows':
-    #calculate displacement field from deformation field
-    X,Y = np.mgrid[0:def_field.shape[0],0:def_field.shape[1]]
-    arrow_disp_x = def_field[::spacing, ::spacing,0] - X[::spacing, ::spacing]
-    arrow_disp_y = def_field[::spacing, ::spacing,1] - Y[::spacing, ::spacing]
-    M = np.hypot(arrow_disp_x, arrow_disp_y)
-    #plot displacements using quiver
-    ax.quiver(X[::spacing, ::spacing], Y[::spacing, ::spacing], \
-      arrow_disp_x, arrow_disp_y, M, scale = 1.0, angles='xy', scale_units='xy', \
-      cmap = 'jet', headwidth=2, width = 0.004, headlength = 3)    
   else:
-    print('Display type must be grid or arrows')
+    if disptype == 'arrows':
+      #calculate displacement field from deformation field
+      X,Y = np.mgrid[0:def_field.shape[0],0:def_field.shape[1]]
+      arrow_disp_x = def_field[::spacing, ::spacing,0] - X[::spacing, ::spacing]
+      arrow_disp_y = def_field[::spacing, ::spacing,1] - Y[::spacing, ::spacing]
+      M = np.hypot(arrow_disp_x, arrow_disp_y)
+      #plot displacements using quiver
+      ax.quiver(X[::spacing, ::spacing], Y[::spacing, ::spacing], \
+        arrow_disp_x, arrow_disp_y, M, scale = 1.0, angles='xy', scale_units='xy', \
+        cmap = 'jet', headwidth=2, width = 0.004, headlength = 3)    
+    else:
+      print('Display type must be grid or arrows')
   # set the axis limits and appearance
   ax.axis('image')
   ax.set_xlim([-1, def_field.shape[0]])
