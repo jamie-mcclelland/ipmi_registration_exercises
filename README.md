@@ -12,6 +12,7 @@ Python versions originally written by Megan Wilson (former PhD student at UCL)
 Python versions can be opened directly in Colab:
 
 <[Exercises 1](https://colab.research.google.com/github/jamie-mcclelland/ipmi_registration_exercises/blob/master/exercises_1/python/registration_exercises_1.ipynb)>
+<[Exercises 2](https://colab.research.google.com/github/jamie-mcclelland/ipmi_registration_exercises/blob/master/exercises_2/python/registration_exercises_2.ipynb)>
 
 
 
