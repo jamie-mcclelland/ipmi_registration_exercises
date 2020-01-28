@@ -272,3 +272,22 @@ def dispDefField(def_field, ax = None, spacing = 5, disptype = 'grid'):
   ax.set_xlim([-1, def_field.shape[0]])
   ax.set_ylim([-1, def_field.shape[1]])
   return ax
+
+
+def calcMSD(A, B):
+    """
+    function to calculate the  mean of squared differences between
+    two images
+
+    INPUTS:    A: an image stored as a 2D matrix
+               B: an image stored as a 2D matrix. B must be the
+                  same size as A
+
+    OUTPUTS:   MSD: the value of the mean of squared differences
+
+
+    NOTE: if either of the images contain NaN values, these
+          pixels should be ignored when calculating the MSD.
+    """
+    # use nanmean function to find mean of squared differences ignoring NaNs
+    return np.nanmean((A - B) * (A - B))
